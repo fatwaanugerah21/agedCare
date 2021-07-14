@@ -33,10 +33,11 @@
             <displayName>Facility</displayName>
             <documentName>Contact</documentName>
         </association>
-        <!-- <collection type="child" name="assessments">
-        	<displayName>Assessments</displayName>
-        	<documentName>Assessment</documentName>
-        	<minCardinality>0</minCardinality>
-        </collection> -->
+        <collection type="child" name="assessments">
+            <displayName>Assessments</displayName>
+            <documentName>Assessment</documentName>
+            <minCardinality>0</minCardinality>
+            <ordering/>
+        </collection>
     </attributes>
 </document>

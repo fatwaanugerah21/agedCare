@@ -8,6 +8,8 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import modules.admin.User.UserExtension;
 import org.skyve.CORE;
+import org.skyve.domain.Bean;
+import org.skyve.domain.ChildBean;
 import org.skyve.domain.messages.DomainException;
 import org.skyve.domain.types.DateTime;
 import org.skyve.impl.domain.AbstractPersistentBean;
@@ -17,11 +19,11 @@ import org.skyve.impl.domain.types.jaxb.DateTimeMapper;
  * Assessment
  * 
  * @navhas n assessmentCreatedBy 1 User
- * @stereotype "persistent"
+ * @stereotype "persistent child"
  */
 @XmlType
 @XmlRootElement
-public class Assessment extends AbstractPersistentBean {
+public class Assessment extends AbstractPersistentBean implements ChildBean<Resident> {
 	/**
 	 * For Serialization
 	 * @hidden
@@ -89,6 +91,10 @@ public class Assessment extends AbstractPersistentBean {
 	 * Assessment Review Time
 	 **/
 	private DateTime assessmentReviewTime;
+
+	private Resident parent;
+
+	private Integer bizOrdinal;
 
 	@Override
 	@XmlTransient
@@ -259,5 +265,31 @@ public class Assessment extends AbstractPersistentBean {
 	public void setAssessmentReviewTime(DateTime assessmentReviewTime) {
 		preset(assessmentReviewTimePropertyName, assessmentReviewTime);
 		this.assessmentReviewTime = assessmentReviewTime;
+	}
+
+	@Override
+	public Resident getParent() {
+		return parent;
+	}
+
+	@Override
+	@XmlElement
+	public void setParent(Resident parent) {
+		if (this.parent != parent) {
+			preset(ChildBean.PARENT_NAME, parent);
+			this.parent = parent;
+		}
+	}
+
+	@Override
+	public Integer getBizOrdinal() {
+		return bizOrdinal;
+	}
+
+	@Override
+	@XmlElement
+	public void setBizOrdinal(Integer bizOrdinal) {
+		preset(Bean.ORDINAL_NAME, bizOrdinal);
+		this.bizOrdinal =  bizOrdinal;
 	}
 }

@@ -4,6 +4,7 @@
     <singularAlias>Assessment</singularAlias>
     <pluralAlias>Assessments</pluralAlias>
     <iconStyleClass>fa fa-at</iconStyleClass>
+    <parentDocument>Resident</parentDocument>
     <bizKey expression="Assessment - {hygieneAssessment}"/>
     <attributes>
         <memo required="true" name="hygieneAssessment">
