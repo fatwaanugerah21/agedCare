@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-access="field">
+
+	<typedef name="OptimisticLock" class="org.skyve.impl.domain.types.OptimisticLockUserType" />
+	<typedef name="Decimal2" class="org.skyve.impl.domain.types.Decimal2UserType" />
+	<typedef name="Decimal5" class="org.skyve.impl.domain.types.Decimal5UserType" />
+	<typedef name="Decimal10" class="org.skyve.impl.domain.types.Decimal10UserType" />
+	<typedef name="DateOnly" class="org.skyve.impl.domain.types.DateOnlyUserType" />
+	<typedef name="DateTime" class="org.skyve.impl.domain.types.DateTimeUserType" />
+	<typedef name="TimeOnly" class="org.skyve.impl.domain.types.TimeOnlyUserType" />
+	<typedef name="Timestamp" class="org.skyve.impl.domain.types.TimestampUserType" />
+	<typedef name="Enum" class="org.skyve.impl.domain.types.EnumUserType" />
+	<class name="modules.agedCare.domain.Assessment" table="AGE_Assessment" entity-name="agedCareAssessment">
+		<id name="bizId" length="36" />
+		<version name="bizVersion" unsaved-value="null" />
+		<property name="bizLock" type="OptimisticLock" length="271" not-null="true" />
+		<property name="bizKey" length="1024" not-null="true" />
+		<property name="bizCustomer" length="50" not-null="true" />
+		<property name="bizFlagComment" length="1024" />
+		<property name="bizDataGroupId" length="36" />
+		<property name="bizUserId" length="36" not-null="true" />
+		<property name="hygieneAssessment" type="text" />
+		<property name="painAssessment" type="text" />
+		<property name="continenceAssessment" type="text" />
+		<property name="sleepAssessment" length="600" />
+		<property name="behaviourAssessment" type="text" />
+		<many-to-one name="assessmentCreatedBy" entity-name="adminUser" column="assessmentCreatedBy_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_AGE_Assessment_assessmentCreatedBy"/>
+		<property name="assessmentReviewTime" type="DateTime" />
+		<filter name="agedCareAssessmentNoneFilter" condition="1=0"/>
+		<filter name="agedCareAssessmentCustomerFilter" condition="bizCustomer=:customerParam"/>
+		<filter name="agedCareAssessmentDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>
+		<filter name="agedCareAssessmentUserIdFilter" condition="bizUserId=:userIdParam"/>
+	</class>
+
+	<class name="modules.agedCare.domain.Facility" table="AGE_Facility" entity-name="agedCareFacility">
+		<id name="bizId" length="36" />
+		<version name="bizVersion" unsaved-value="null" />
+		<property name="bizLock" type="OptimisticLock" length="271" not-null="true" />
+		<property name="bizKey" length="1024" not-null="true" />
+		<property name="bizCustomer" length="50" not-null="true" />
+		<property name="bizFlagComment" length="1024" />
+		<property name="bizDataGroupId" length="36" />
+		<property name="bizUserId" length="36" not-null="true" />
+		<property name="facilityName" length="500" />
+		<property name="buildingNumber" />
+		<property name="streetName" length="500" />
+		<property name="suburb" length="500" />
+		<property name="state" length="500" />
+		<many-to-one name="facilityManager" entity-name="adminContact" column="facilityManager_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_AGE_Facility_facilityManager"/>
+		<property name="location" />
+		<filter name="agedCareFacilityNoneFilter" condition="1=0"/>
+		<filter name="agedCareFacilityCustomerFilter" condition="bizCustomer=:customerParam"/>
+		<filter name="agedCareFacilityDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>
+		<filter name="agedCareFacilityUserIdFilter" condition="bizUserId=:userIdParam"/>
+	</class>
+
+	<class name="modules.agedCare.domain.Resident" table="AGE_Resident" entity-name="agedCareResident">
+		<id name="bizId" length="36" />
+		<version name="bizVersion" unsaved-value="null" />
+		<property name="bizLock" type="OptimisticLock" length="271" not-null="true" />
+		<property name="bizKey" length="1024" not-null="true" />
+		<property name="bizCustomer" length="50" not-null="true" />
+		<property name="bizFlagComment" length="1024" />
+		<property name="bizDataGroupId" length="36" />
+		<property name="bizUserId" length="36" not-null="true" />
+		<property name="residentID" length="100" />
+		<property name="residentName" length="500" />
+		<property name="photo" length="36" />
+		<property name="DOB" type="DateOnly" />
+		<property name="roomNumber" />
+		<property name="BIO" type="text" />
+		<property name="admissionDate" type="DateOnly" />
+		<many-to-one name="facility" entity-name="adminContact" column="facility_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_AGE_Resident_facility"/>
+		<filter name="agedCareResidentNoneFilter" condition="1=0"/>
+		<filter name="agedCareResidentCustomerFilter" condition="bizCustomer=:customerParam"/>
+		<filter name="agedCareResidentDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>
+		<filter name="agedCareResidentUserIdFilter" condition="bizUserId=:userIdParam"/>
+	</class>
+
+	<filter-def name="agedCareAssessmentNoneFilter" />
+	<filter-def name="agedCareAssessmentCustomerFilter">
+		<filter-param name="customerParam" type="string"/>
+	</filter-def>
+	<filter-def name="agedCareAssessmentDataGroupIdFilter">
+		<filter-param name="dataGroupIdParam" type="string"/>
+	</filter-def>
+	<filter-def name="agedCareAssessmentUserIdFilter">
+		<filter-param name="userIdParam" type="string"/>
+	</filter-def>
+	<filter-def name="agedCareFacilityNoneFilter" />
+	<filter-def name="agedCareFacilityCustomerFilter">
+		<filter-param name="customerParam" type="string"/>
+	</filter-def>
+	<filter-def name="agedCareFacilityDataGroupIdFilter">
+		<filter-param name="dataGroupIdParam" type="string"/>
+	</filter-def>
+	<filter-def name="agedCareFacilityUserIdFilter">
+		<filter-param name="userIdParam" type="string"/>
+	</filter-def>
+	<filter-def name="agedCareResidentNoneFilter" />
+	<filter-def name="agedCareResidentCustomerFilter">
+		<filter-param name="customerParam" type="string"/>
+	</filter-def>
+	<filter-def name="agedCareResidentDataGroupIdFilter">
+		<filter-param name="dataGroupIdParam" type="string"/>
+	</filter-def>
+	<filter-def name="agedCareResidentUserIdFilter">
+		<filter-param name="userIdParam" type="string"/>
+	</filter-def>
+</hibernate-mapping>
