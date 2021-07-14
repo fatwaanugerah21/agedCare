@@ -71,7 +71,7 @@
 		<property name="roomNumber" />
 		<property name="BIO" type="text" />
 		<property name="admissionDate" type="DateOnly" />
-		<many-to-one name="facility" entity-name="adminContact" column="facility_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_AGE_Resident_facility"/>
+		<many-to-one name="facilityName" entity-name="adminContact" column="facilityName_id" cascade="persist,save-update,refresh,merge" foreign-key="FK_AGE_Resident_facilityName"/>
 		<filter name="agedCareResidentNoneFilter" condition="1=0"/>
 		<filter name="agedCareResidentCustomerFilter" condition="bizCustomer=:customerParam"/>
 		<filter name="agedCareResidentDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>

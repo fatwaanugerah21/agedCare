@@ -16,7 +16,7 @@ import org.skyve.impl.domain.types.jaxb.DateOnlyMapper;
 /**
  * Resident
  * 
- * @navhas n facility 1 Contact
+ * @navhas n facilityName 1 Contact
  * @stereotype "persistent"
  */
 @XmlType
@@ -56,7 +56,7 @@ public class Resident extends AbstractPersistentBean {
 	public static final String admissionDatePropertyName = "admissionDate";
 
 	/** @hidden */
-	public static final String facilityPropertyName = "facility";
+	public static final String facilityNamePropertyName = "facilityName";
 
 	/**
 	 * ResidentID
@@ -96,7 +96,7 @@ public class Resident extends AbstractPersistentBean {
 	/**
 	 * Facility
 	 **/
-	private Contact facility = null;
+	private Contact facilityName = null;
 
 	@Override
 	@XmlTransient
@@ -270,22 +270,22 @@ public class Resident extends AbstractPersistentBean {
 	}
 
 	/**
-	 * {@link #facility} accessor.
+	 * {@link #facilityName} accessor.
 	 * @return	The value.
 	 **/
-	public Contact getFacility() {
-		return facility;
+	public Contact getFacilityName() {
+		return facilityName;
 	}
 
 	/**
-	 * {@link #facility} mutator.
-	 * @param facility	The new value.
+	 * {@link #facilityName} mutator.
+	 * @param facilityName	The new value.
 	 **/
 	@XmlElement
-	public void setFacility(Contact facility) {
-		if (this.facility != facility) {
-			preset(facilityPropertyName, facility);
-			this.facility = facility;
+	public void setFacilityName(Contact facilityName) {
+		if (this.facilityName != facilityName) {
+			preset(facilityNamePropertyName, facilityName);
+			this.facilityName = facilityName;
 		}
 	}
 }

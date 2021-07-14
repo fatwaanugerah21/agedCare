@@ -29,9 +29,14 @@
         <date required="true" name="admissionDate">
             <displayName>Admission Date</displayName>
         </date>
-        <association required="true" type="aggregation" name="facility">
+        <association required="true" type="aggregation" name="facilityName">
             <displayName>Facility</displayName>
             <documentName>Contact</documentName>
         </association>
+        <!-- <collection type="child" name="assessments">
+        	<displayName>Assessments</displayName>
+        	<documentName>Assessment</documentName>
+        	<minCardinality>0</minCardinality>
+        </collection> -->
     </attributes>
 </document>
