@@ -3,6 +3,7 @@
     <persistent name="AGE_Assessment"/>
     <singularAlias>Assessment</singularAlias>
     <pluralAlias>Assessments</pluralAlias>
+    <iconStyleClass>fa fa-at</iconStyleClass>
     <bizKey expression="Assessment - {hygieneAssessment}"/>
     <attributes>
         <memo required="true" name="hygieneAssessment">
