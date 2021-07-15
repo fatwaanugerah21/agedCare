@@ -31,4 +31,9 @@
             <displayName>Assessment Review Time</displayName>
         </dateTime>
     </attributes>
+    <conditions>
+		<condition name="roleCarer">
+			<expression><![CDATA[isUserInRole("agedCare", "Carers")]]></expression>
+		</condition>
+	</conditions>
 </document>

@@ -267,6 +267,25 @@ public class Assessment extends AbstractPersistentBean implements ChildBean<Resi
 		this.assessmentReviewTime = assessmentReviewTime;
 	}
 
+	/**
+	 * roleCarer
+	 *
+	 * @return The condition
+	 */
+	@XmlTransient
+	public boolean isRoleCarer() {
+		return (isUserInRole("agedCare", "Carers"));
+	}
+
+	/**
+	 * {@link #isRoleCarer} negation.
+	 *
+	 * @return The negated condition
+	 */
+	public boolean isNotRoleCarer() {
+		return (! isRoleCarer());
+	}
+
 	@Override
 	public Resident getParent() {
 		return parent;

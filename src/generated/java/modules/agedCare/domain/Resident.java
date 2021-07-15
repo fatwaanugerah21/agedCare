@@ -7,7 +7,6 @@ import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import modules.admin.domain.Contact;
 import org.skyve.CORE;
 import org.skyve.domain.messages.DomainException;
 import org.skyve.domain.types.DateOnly;
@@ -19,7 +18,7 @@ import org.skyve.impl.domain.types.jaxb.DateOnlyMapper;
  * Resident
  * 
  * @navcomposed 1 assessments 0..n Assessment
- * @navhas n facilityName 1 Contact
+ * @navhas n facilityName 1 Facility
  * @stereotype "persistent"
  */
 @XmlType
@@ -102,7 +101,7 @@ public class Resident extends AbstractPersistentBean {
 	/**
 	 * Facility
 	 **/
-	private Contact facilityName = null;
+	private Facility facilityName = null;
 
 	/**
 	 * Assessments
@@ -284,7 +283,7 @@ public class Resident extends AbstractPersistentBean {
 	 * {@link #facilityName} accessor.
 	 * @return	The value.
 	 **/
-	public Contact getFacilityName() {
+	public Facility getFacilityName() {
 		return facilityName;
 	}
 
@@ -293,7 +292,7 @@ public class Resident extends AbstractPersistentBean {
 	 * @param facilityName	The new value.
 	 **/
 	@XmlElement
-	public void setFacilityName(Contact facilityName) {
+	public void setFacilityName(Facility facilityName) {
 		if (this.facilityName != facilityName) {
 			preset(facilityNamePropertyName, facilityName);
 			this.facilityName = facilityName;

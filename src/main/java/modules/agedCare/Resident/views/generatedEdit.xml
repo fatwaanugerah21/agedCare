@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<view xmlns="http://www.skyve.org/xml/view"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="edit"
+	title="Resident"
+	xsi:schemaLocation="http://www.skyve.org/xml/view ../../../../schemas/view.xsd">
+	<tabPane>
+		<tab title="General">
+			<hbox border="true">
+				<!-- left side -->
+				<vbox responsiveWidth="8" percentageWidth="60">
+					<form border="true" borderTitle="Resident Info">
+						<column percentageWidth="30" responsiveWidth="4" />
+						<column />
+						<row>
+							<item>
+								<default binding="residentID" />
+							</item>
+						</row>
+						<row>
+							<item>
+								<default binding="residentName" />
+							</item>
+						</row>
+						<row>
+							<item>
+								<default binding="DOB" />
+							</item>
+						</row>
+					</form>
+					<form border="true" borderTitle="Facility Info">
+						<column percentageWidth="30" responsiveWidth="4" />
+						<column />
+						<row>
+							<item>
+								<default binding="roomNo" />
+							</item>
+						</row>
+						<row>
+							<item>
+								<default binding="admissionDate" />
+							</item>
+						</row>
+						<row>
+							<item>
+								<default binding="facility" />
+							</item>
+						</row>
+					</form>
+				</vbox>
+				<!-- right side -->
+				<vbox responsiveWidth="4" percentageWidth="40">
+					<form>
+						<column percentageWidth="20" responsiveWidth="1" />
+						<column />
+						<row>
+							<item showLabel="false">
+								<contentImage binding="photo" />
+							</item>
+						</row>
+						<row>
+							<item>
+								<default binding="BIO" />
+							</item>
+						</row>
+					</form>
+				</vbox>
+			</hbox>
+		</tab>
+		<tab title="Assessments">
+			<dataGrid binding="assessments">
+				<boundColumn binding="hygieneAssessment" />
+				<boundColumn binding="painAssessment" />
+				<boundColumn binding="continenceAssessment" />
+				<boundColumn binding="sleepAssessment" />
+				<boundColumn binding="behaviourAssessment" />
+				<boundColumn binding="assessmentCreatedBy" />
+				<boundColumn binding="assessmentReviewTime" />
+				<onAddedHandlers />
+				<onEditedHandlers />
+				<onRemovedHandlers />
+				<onSelectedHandlers />
+			</dataGrid>
+		</tab>
+	</tabPane>
+	<actions>
+		<defaults />
+	</actions>
+	<newParameters />
+</view>
