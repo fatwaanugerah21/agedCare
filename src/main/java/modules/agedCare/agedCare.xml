@@ -3,8 +3,8 @@
     <homeRef>list</homeRef>
     <homeDocument>Resident</homeDocument>
     <documents>
-        <document ref="Resident" defaultQueryName="qResident"/>
         <document ref="Facility" defaultQueryName="qFacility"/>
+        <document ref="Resident" defaultQueryName="qResident"/>
         <document ref="Assessment" defaultQueryName="qAssessment"/>
         <document ref="Contact" moduleRef="admin"/>
         <document ref="DataGroup" moduleRef="admin"/>
@@ -62,13 +62,6 @@
         <list document="Facility" name="Facilities">
             <role name="Maintainer"/>
             <role name="Manager"/>
-            <role name="Viewer"/>
-        </list>
-        <list document="Assessment" name="Assessments">
-            <role name="Maintainer"/>
-            <role name="Manager"/>
-            <role name="Nurse"/>
-            <role name="Carer"/>
             <role name="Viewer"/>
         </list>
     </menu>
